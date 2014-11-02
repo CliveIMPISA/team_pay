@@ -47,6 +47,20 @@ class TeamPayApp < Sinatra::Base
       money
     end
   end
+  
+  get '/api/v1/form' do
+    erb :form
+  end
+
+  post '/form' do
+    content_type :json
+    get_team(params[:message]).to_json
+  end
+
+  not_found do
+    status 404
+    'not found'
+  end
 
   get '/api/v1/:teamname.json' do
     content_type :json
