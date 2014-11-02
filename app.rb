@@ -15,3 +15,26 @@ class TeamPayApp < Sinatra::Base
     content_type :json
     get_team(params[:teamname]).to_json
   end
+
+    def player_total_salary(teamname, player_name)
+      players = []
+      salary_scrape = get_team(teamname[0])
+      player_name.each do |each_player|
+        salary_scrape.each do |data_row|
+          if data_row['Player'] == each_player
+            players << one_total(data_row, each_player)
+          end
+        end
+      end
+      players
+    end
+
+    def parse_money(money)
+      data = money.gsub(/[$,]/, '$' => '', ',' => '')
+      data.to_i
+    end
+
+    def back_to_money(data)
+      money = "$#{data}"
+      money
+    end
