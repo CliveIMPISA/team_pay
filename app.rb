@@ -10,12 +10,6 @@ class TeamPayApp < Sinatra::Base
       var = SalaryScraper::BasketballReference.new
       var.to_array_of_hashes(teamname.upcase)
     end
-  end
-  get '/api/v1/:teamname.json' do
-    content_type :json
-    get_team(params[:teamname]).to_json
-  end
-
     def player_total_salary(teamname, player_name)
       players = []
       salary_scrape = get_team(teamname[0])
@@ -38,3 +32,19 @@ class TeamPayApp < Sinatra::Base
       money = "$#{data}"
       money
     end
+  end
+
+  get '/api/v1/:teamname.json' do
+    content_type :json
+    get_team(params[:teamname]).to_json
+  end
+  
+  post '/api/v1/check2' do
+    content_type :json
+    req = JSON.parse(request.body.read)
+    teamname = req['teamname']
+    player_name = req['player_name']
+    player_total_salary(teamname, player_name).to_json
+  end
+
+end
