@@ -1,44 +1,97 @@
-# NBA Salary Scrape Web Service
-## A simple version of nbasalaryscrape web Service
+[Team Pay]("https://team-pay.herokuapp.com")
+========
+Uses the nbasalaryscrape gem, Sinatra and Heroku cloud platform to create a web service.
+## About
+[Team Pay]("https://team-pay.herokuapp.com") uses a combination of GET and POST request to display several useful information about and NBA basketball team players' salary.
+It can display all the members alone; the team members and their salary information; and a list of players from any particular team total salary. Below is a list of examples of how the service can be used.
 
->Handles
+## Usage
+###GET Requests
+Handles:
 
 
-    * GET /api/v1/:teamname.json/.json
+- GET /api/v1/:teamname.json
 
-        * returns JSON of all players and their salary information
+ - returns all players and their salary information in JSON format
+ - e.g https://team-pay.herokuapp.com/api/v1/mia.json
 
 
-    * POST /api/v1/check
+- GET /api/v1/players/:teamname.json
 
-        * takes JSON: name of team and name of players
-        * returns array of salary information for the specified players
-### Usage
+  - return an list of all the players on any team
+  - e.g https://team-pay.herokuapp.com/api/v1/players/mia.json
+
+***
+###POST Requests
+Handles:
+
+- POST /api/v1/check
+ - takes JSON: name of team and name of players
+ - returns array of salary information for the specified players
+
+
+- POST /api/v1/check2
+ - takes JSON: name of team and name of players
+ - returns array of salary totals for the specified players
+
+
+
+
+####sample request body and headers for POST request
+POST DESTINATION
+````
+        https://team-pay.herokuapp.com
+
+````
+HEADERS
+````
+        Accept: application/json
+        Content-type: application/json
+````
+REQUEST BODY
 ````
 		{
 		"teamname": ["PHO"],
 		"player_name": ["Archie Goodwin", "Marcus Morris"]
 		}
 ````
-    * POST /api/v1/check2
+Post request can be run using a service like [hurl.it]("http://www.hurl.it")
+or the curl command line tool.
+***
 
-          * takes JSON: name of team and name of players
-          * returns array of salary totals for the specified players
-### Usage
-````
-		{
-		"teamname": ["PHO"],
-		"player_name": ["Archie Goodwin", "Marcus Morris"]
-		}
-````
-    * POST /api/v1/players/:teamname.json
+##Abbreviations
 
-          * takes JSON: name of team
-          * returns array of all the names of players on the team
-### Usage
-````
-		{
-		"teamname": ["PHO"],
-		"player_name": ["Archie Goodwin", "Marcus Morris"]
-		}
-````
+Below are NBA team abbreviations
+
+|  Team Name |Abbreviation  |
+|:---------------:|:-----:|
+|Pheonix Suns|PHO|
+|Miami Heat|MIA|
+|Atlanta Hawks |ATL|
+|Boston Celtics|BOS|
+|Brooklyn Nets|BRK|
+|Chicago Bulls|CHI|
+|Cleveland Cavaliers|CLE|
+|Dallas Mavericks|DAL|
+|Denver Nuggets|DEN|
+|Golden State Warriors|GSW|
+|Detroit Pistons|DET|
+|Los Angeles Lakers|LAL|
+|Los Angeles Clippers|LAC|
+|Houston Rockets|HOU|
+|Indiana Pacers|IND|
+|Minnesota Timberwolves|MIN|
+|Memphis Grizzlies| MEM|
+|Milwuakee Bucks| MIL|
+|New Orleans Pelicans| NOP|
+|New York Knicks|NYK|
+|Oklahoma City Thunder|OKC|
+|Sacramento Kings| SAC|
+|Washington Wizards|WAS|
+|Utah Jazz| UTA|
+|San Antonio Spurs|SAS|
+|Toronto Raptors|TOR|
+|Philadephia 76ers|PHI|
+|Portland TrailBlazers|POR|
+|Orlando Magic|ORL|
+|Charlotte Hornets|CHO|
