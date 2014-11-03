@@ -21,6 +21,11 @@ Handles:
   - return an list of all the players on any team
   - e.g https://team-pay.herokuapp.com/api/v1/players/mia.json
 
+
+- GET /api/v1/form
+  - This final GET request returns a GUI form where a POST request for all players data could be done by entering a team's name and clicking the submit button
+  - e.g https://team-pay.herokuapp.com/api/v1/form
+
 ***
 ###POST Requests
 Handles:
