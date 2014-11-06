@@ -24,8 +24,8 @@ describe 'TeamPay Stories' do
     end
   end
 
-  describe 'Checking specified player or players\' salary' do
-    it 'should return of two Phoenix players\' salaries' do
+  describe 'TeamPayApp' do
+    it "should return of two Phoenix players' salaries" do
       header = { 'CONTENT_TYPE' => 'application/json' }
       body = {
         teamname: ["PHO"],
@@ -51,8 +51,8 @@ describe 'TeamPay Stories' do
     end
   end
 
-  describe 'Checking users for badges' do
-    it 'should find missing badges' do
+  describe "should return of two Phoenix players' salaries" do
+    it 'should find total salaries of the two players below' do
       header = { 'CONTENT_TYPE' => 'application/json' }
       body = {
         teamname: ["PHO"],
