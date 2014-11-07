@@ -99,13 +99,13 @@ class TeamPayApp < Sinatra::Base
 
   post '/api/v1/check' do
     content_type :json
-    req = JSON.parse(request.body.read)
     begin
-      teamname = req['teamname']
-      player_name = req['player_name']
+      req = JSON.parse(request.body.read)
     rescue
       halt 400
     end
+    teamname = req['teamname']
+    player_name = req['player_name']
     player_salary_data(teamname, player_name).to_json
   end
 
