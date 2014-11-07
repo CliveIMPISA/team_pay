@@ -8,7 +8,12 @@ class TeamPayApp < Sinatra::Base
   helpers do
     def get_team(teamname)
       var = SalaryScraper::BasketballReference.new
-      var.to_array_of_hashes(teamname.upcase)
+      begin
+        var.to_array_of_hashes(teamname.upcase)
+      rescue
+        halt 404
+      else
+        var.to_array_of_hashes(teamname.upcase)
     end
 
     def get_team_players(teamname)
@@ -21,13 +26,18 @@ class TeamPayApp < Sinatra::Base
     end
 
     def player_salary_data(teamname, player_name)
-      salary_scrape = get_team(teamname[0])
-      player_scrape = []
-      player_name.each do |each_player|
-        salary_scrape.each do |data_row|
-          player_scrape <<  data_row  if data_row['Player'] == each_player
+
+      begin
+        salary_scrape = get_team(teamname[0])
+        player_scrape = []
+        player_name.each do |each_player|
+          salary_scrape.each do |data_row|
+            player_scrape <<  data_row  if data_row['Player'] == each_player
+          end
         end
-      end
+      rescue
+        halt 404
+      else
       player_scrape
     end
 
@@ -79,6 +89,7 @@ class TeamPayApp < Sinatra::Base
     content_type :json
     get_team(params[:message]).to_json
   end
+
   not_found do
     status 404
     'not found'
@@ -87,13 +98,19 @@ class TeamPayApp < Sinatra::Base
   post '/api/v1/check' do
     content_type :json
     req = JSON.parse(request.body.read)
-    teamname = req['teamname']
-    player_name = req['player_name']
+    begin
+      teamname = req['teamname']
+      player_name = req['player_name']
+    rescue
+      halt 400
     player_salary_data(teamname, player_name).to_json
   end
   post '/api/v1/check2' do
     content_type :json
-    req = JSON.parse(request.body.read)
+    begin
+      req = JSON.parse(request.body.read)
+    rescue
+      halt 400
     teamname = req['teamname']
     player_name = req['player_name']
     player_total_salary(teamname, player_name).to_json
