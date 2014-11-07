@@ -14,6 +14,7 @@ class TeamPayApp < Sinatra::Base
         halt 404
       else
         var.to_array_of_hashes(teamname.upcase)
+      end
     end
 
     def get_team_players(teamname)
@@ -38,7 +39,8 @@ class TeamPayApp < Sinatra::Base
       rescue
         halt 404
       else
-      player_scrape
+        player_scrape
+      end
     end
 
     def one_total(data_row, each_player)
