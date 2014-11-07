@@ -6,4 +6,10 @@ gem 'nbasalaryscrape'
 gem 'nokogiri'
 gem 'json'
 gem 'tilt', '~> 1.4.1'
+group :test do
+	gem 'minitest'
+	gem 'rack'
+	gem 'rack-test'
+	gem 'rake'
+end
 
