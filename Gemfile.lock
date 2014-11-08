@@ -40,7 +40,7 @@ DEPENDENCIES
   nokogiri
   rack
   rack-test
-  rake (~> 10.0.1)
+  rake
   sinatra
   sinatra-contrib
   sinatra-flash
