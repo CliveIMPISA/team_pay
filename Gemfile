@@ -2,8 +2,6 @@ source 'http://rubygems.org'
 
 gem 'sinatra', :require => 'sinatra/base'
 gem 'sinatra-contrib'
-gem 'sinatra-flash'
-gem 'sinatra-contrib'
 gem 'nbasalaryscrape'
 gem 'nokogiri'
 gem 'json'
