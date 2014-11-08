@@ -1,3 +1,5 @@
+[ ![Codeship Status for CliveIMPISA/team_pay](https://codeship.io/projects/9eba9520-477f-0132-6126-02177f684f61/status?branch=feature/CliveIMPISA)](https://codeship.io/projects/45630)
+
 [Team Pay]("https://team-pay.herokuapp.com")
 ========
 Uses the nbasalaryscrape gem, Sinatra and Heroku cloud platform to create a web service.
