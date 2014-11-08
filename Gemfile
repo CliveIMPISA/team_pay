@@ -14,5 +14,5 @@ group:test do
 	gem 'minitest'
 	gem 'rack'
 	gem 'rack-test'
-	gem 'rake', '~> 10.0.1'
+	gem 'rake'
 end
