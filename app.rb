@@ -6,6 +6,8 @@ require 'json'
 
 # nbasalaryscrape service
 class TeamPayApp < Sinatra::Base
+  register Sinatra::Namespace
+  
   helpers do
     def get_team(teamname)
       var = SalaryScraper::BasketballReference.new
@@ -69,7 +71,7 @@ class TeamPayApp < Sinatra::Base
     end
   end
 
-  namespace 'api/v1'  do
+  namespace '/api/v1'  do
     get '/:teamname.json' do
       content_type :json
       get_team(params[:teamname]).to_json
