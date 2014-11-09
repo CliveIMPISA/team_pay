@@ -54,6 +54,28 @@ describe 'TeamPay Stories' do
       header = { 'CONTENT_TYPE' => 'application/json' }
       body =  { teamname: ['PHO'],
                 player_name: ['Archie Goodwin', 'Marcus Morris'] }
+      post '/api/v1/check3', body.to_json, header
+      last_response.must_be :ok?
+    end
+    it 'should return 404 for unknown users' do
+      header = { 'CONTENT_TYPE' => 'application/json' }
+      body = { teamname: [random_str(15)], player_name: [random_str(30)] }
+      post '/api/v1/check3', body.to_json, header
+      last_response.must_be :not_found?
+    end
+    it 'should return 400 for bad JSON formatting' do
+      header = { 'CONTENT_TYPE' => 'application/json' }
+      body = random_str(50)
+      post '/api/v1/check3', body, header
+      last_response.must_be :bad_request?
+    end
+  end
+
+  describe "should return of two Phoenix players' salaries" do
+    it 'should find total salaries of the two players below' do
+      header = { 'CONTENT_TYPE' => 'application/json' }
+      body =  { teamname: ['PHO'],
+                player_name: ['Archie Goodwin', 'Marcus Morris'] }
       post '/api/v1/check2', body.to_json, header
       last_response.must_be :ok?
     end
