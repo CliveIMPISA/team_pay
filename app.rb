@@ -107,7 +107,7 @@ class TeamPayApp < Sinatra::Base
       player_scrape += parse_money(data_row['2017-18'])
       player_scrape += parse_money(data_row['2018-19'])
       player_scrape += parse_money(data_row['2019-20'])
-      fullpay.Hash.new
+      fullpay=Hash.new
       fullpay = { 'player' => each_player,
       'fullpay' => player_scrape }
       fullpay
