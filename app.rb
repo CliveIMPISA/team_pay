@@ -80,21 +80,21 @@ class TeamPayApp < Sinatra::Base
     end
     ###########################################################################
     def two_players_salary_data(teamname, player_name)
-      # salary_scrape = get_team(teamname[0])
-      # diff=0
-      # player_scrape = []
-      # player_name.each do |each_player|
-      #   salary_scrape.each do |data_row|
-      #     player_scrape << diff_total(data_row, each_player) if data_row['Player'] == each_player
-      #   end
-      # end
-      # if player_scrape[0]['fullpay'] > player_scrap[1]['fullpay']
-      #   diff= player_scrape[0]['fullpay'] - player_scrap[1]['fullpay']
-      #   full_pay << {'fullpay' => back_to_money(playerscrape)}
-      # else
-      #   diff= player_scrap[1]['fullpay'] - player_scrape[0]['fullpay']
-      #   full_pay << {'fullpay' => back_to_money(playerscrape)}
-      # end
+      salary_scrape = get_team(teamname[0])
+      diff=0
+      player_scrape = []
+      player_name.each do |each_player|
+        salary_scrape.each do |data_row|
+          player_scrape << diff_total(data_row, each_player) if data_row['Player'] == each_player
+        end
+      end
+      if player_scrape[0]['fullpay'] > player_scrap[1]['fullpay']
+        diff= player_scrape[0]['fullpay'] - player_scrap[1]['fullpay']
+        full_pay << {'fullpay' => back_to_money(playerscrape)}
+      else
+        diff= player_scrap[1]['fullpay'] - player_scrape[0]['fullpay']
+        full_pay << {'fullpay' => back_to_money(playerscrape)}
+      end
       "Hey"
     end
 
@@ -106,6 +106,7 @@ class TeamPayApp < Sinatra::Base
       player_scrape += parse_money(data_row['2017-18'])
       player_scrape += parse_money(data_row['2018-19'])
       player_scrape += parse_money(data_row['2019-20'])
+      fullpay.Hash.new
       fullpay = { 'player' => each_player,
       'fullpay' => player_scrape }
       fullpay
