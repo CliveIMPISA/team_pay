@@ -98,7 +98,7 @@ class TeamPayApp < Sinatra::Base
         diff= player_scrape[1]['fullpay'] - player_scrape[0]['fullpay']
         return_string="#{player_scrape[1]['player']} makes #{back_to_money(diff)} more than #{player_scrape[0]['player']} "
       else
-        return_string="#{player_scrape[1]['player']} makes the salary (#{back_to_money(player_scrape[0]['fullpay'])}) "
+        return_string="#{player_scrape[1]['player']} and #{player_scrape[0]['player']} makes the salary (#{back_to_money(player_scrape[0]['fullpay'])}) "
       end
       return_string
     end
