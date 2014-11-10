@@ -95,7 +95,7 @@ class TeamPayApp < Sinatra::Base
         diff= player_scrap[1]['fullpay'] - player_scrape[0]['fullpay']
         full_pay << {'fullpay' => back_to_money(playerscrape)}
       end
-      diff
+      "Hey"
     end
 
     def diff_total(data_row, each_player)
