@@ -89,11 +89,11 @@ class TeamPayApp < Sinatra::Base
        end
       end
 
-      if player_scrape[0]['fullpay'] > player_scrap[1]['fullpay']
-        diff= player_scrape[0]['fullpay'] - player_scrap[1]['fullpay']
+      if player_scrape[0]['fullpay'] > player_scrape[1]['fullpay']
+        diff= player_scrape[0]['fullpay'] - player_scrape[1]['fullpay']
         # full_pay << {'fullpay' => back_to_money(playerscrape)}
       else
-        diff= player_scrap[1]['fullpay'] - player_scrape[0]['fullpay']
+        diff= player_scrape[1]['fullpay'] - player_scrape[0]['fullpay']
         # full_pay << {'fullpay' => back_to_money(playerscrape)}
       end
       diff
