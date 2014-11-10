@@ -42,6 +42,11 @@ Handles:
  - returns array of salary totals for the specified players
 
 
+- POST /api/v1/check3
+ - takes JSON: name of team and name of two players
+ - returns difference in players' salary
+
+
 
 
 ####sample request body and headers for POST request
