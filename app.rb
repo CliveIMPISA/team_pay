@@ -81,14 +81,15 @@ class TeamPayApp < Sinatra::Base
     ###########################################################################
     def two_players_salary_data(teamname, player_name)
       salary_scrape = get_team(teamname[0])
-      diff=0
-      player_scrape = []
-      player_name.each do |each_player|
-        salary_scrape.each do |data_row|
-          player_scrape << diff_total(data_row, each_player) if data_row['Player'] == each_player
-        end
-      end
-      player_scrape
+      salary_scrape 
+      # diff=0
+      # player_scrape = []
+      # player_name.each do |each_player|
+      #   salary_scrape.each do |data_row|
+      #     player_scrape << diff_total(data_row, each_player) if data_row['Player'] == each_player
+      #   end
+      # end
+      # player_scrape
       # if player_scrape[0]['fullpay'] > player_scrap[1]['fullpay']
       #   diff= player_scrape[0]['fullpay'] - player_scrap[1]['fullpay']
       #   full_pay << {'fullpay' => back_to_money(playerscrape)}
