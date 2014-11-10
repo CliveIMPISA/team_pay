@@ -88,16 +88,14 @@ class TeamPayApp < Sinatra::Base
          player_scrape << diff_total(data_row, each_player) if data_row['Player'] == each_player
        end
       end
-      player_scrape
-      # player_scrape
-      # if player_scrape[0]['fullpay'] > player_scrap[1]['fullpay']
-      #   diff= player_scrape[0]['fullpay'] - player_scrap[1]['fullpay']
-      #   full_pay << {'fullpay' => back_to_money(playerscrape)}
-      # else
-      #   diff= player_scrap[1]['fullpay'] - player_scrape[0]['fullpay']
-      #   full_pay << {'fullpay' => back_to_money(playerscrape)}
-      # end
-      # "Hey"
+      if player_scrape[0]['fullpay'] > player_scrap[1]['fullpay']
+        diff= player_scrape[0]['fullpay'] - player_scrap[1]['fullpay']
+        full_pay << {'fullpay' => back_to_money(playerscrape)}
+      else
+        diff= player_scrap[1]['fullpay'] - player_scrape[0]['fullpay']
+        full_pay << {'fullpay' => back_to_money(playerscrape)}
+      end
+      diff
     end
 
     def diff_total(data_row, each_player)
