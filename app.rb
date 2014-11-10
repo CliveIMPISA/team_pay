@@ -27,7 +27,6 @@ class TeamPayApp < Sinatra::Base
     end
 
     def player_salary_data(teamname, player_name)
-
       begin
         salary_scrape = get_team(teamname[0])
         player_scrape = []
@@ -89,16 +88,18 @@ class TeamPayApp < Sinatra::Base
          player_scrape << diff_total(data_row, each_player) if data_row['Player'] == each_player
        end
       end
-
+      make_salary_comparisons(player_scrape)
+    end
+    def make_salary_comparisons(player_scrape)
       if player_scrape[0]['fullpay'] > player_scrape[1]['fullpay']
-        diff= player_scrape[0]['fullpay'] - player_scrape[1]['fullpay']
-        # full_pay << {'fullpay' => back_to_money(playerscrape)}
-        return_string="#{player_scrape[0]['player']} makes #{back_to_money(diff)} more than #{player_scrape[1]['player']} "
+        diff = player_scrape[0]['fullpay'] - player_scrape[1]['fullpay']
+
+        return_string = "#{player_scrape[0]['player']} makes #{back_to_money(diff)} more than #{player_scrape[1]['player']} "
       elsif player_scrape[1]['fullpay'] > player_scrape[0]['fullpay']
-        diff= player_scrape[1]['fullpay'] - player_scrape[0]['fullpay']
-        return_string="#{player_scrape[1]['player']} makes #{back_to_money(diff)} more than #{player_scrape[0]['player']} "
+        diff = player_scrape[1]['fullpay'] - player_scrape[0]['fullpay']
+        return_string = "#{player_scrape[1]['player']} makes #{back_to_money(diff)} more than #{player_scrape[0]['player']} "
       else
-        return_string="#{player_scrape[1]['player']} and #{player_scrape[0]['player']} makes the salary (#{back_to_money(player_scrape[0]['fullpay'])}) "
+        return_string = "#{player_scrape[1]['player']} and #{player_scrape[0]['player']} makes the same salary (#{back_to_money(player_scrape[0]['fullpay'])}) "
       end
       return_string
     end
